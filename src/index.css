@@ -1160,3 +1160,79 @@ footer {
   opacity: 0;
 }
 
+/* Split Skills Layout & Capabilities Card */
+.skills-split-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+@media (max-width: 968px) {
+  .skills-split-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+.capabilities-category {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 36px;
+}
+
+.capabilities-category h3 {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+
+.capability-group {
+  margin-bottom: 24px;
+}
+
+.capability-group:last-child {
+  margin-bottom: 0;
+}
+
+.capability-group h4 {
+  font-size: 0.95rem;
+  color: var(--cyan);
+  margin-bottom: 10px;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.capability-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.capability-group ul li {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  position: relative;
+  padding-left: 16px;
+  line-height: 1.5;
+}
+
+.capability-group ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--cyan);
+}
+
+.exp-date {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+

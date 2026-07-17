@@ -126,7 +126,7 @@ function App() {
       {/* Hero Section */}
       <div className="hero-container" id="hero">
         <div className="hero-left">
-          <span className="hero-pretitle reveal delay-100">SOFTWARE ENGINEER</span>
+          <span className="hero-pretitle reveal delay-100">FULLSTACK DEVELOPER</span>
           <h1 className="hero-title reveal delay-200">
             Henry <span>Amaechi</span>
           </h1>
@@ -169,12 +169,30 @@ function App() {
           </div>
           <div className="about-details reveal delay-200">
             <div className="exp-block">
-              <h3 className="exp-title">IT intern</h3>
-              <div className="exp-meta">Workforce Group, Lagos</div>
+              <span className="exp-date">July 2024 - October 2024</span>
+              <h3 className="exp-title">IT Intern</h3>
+              <div className="exp-meta">Workforce Group, Lagos | IT Operations</div>
+              <p className="exp-desc">
+                Automated corporate operations tasks, designed custom backend API utilities, and maintained corporate network integrity.
+              </p>
+              <ul className="exp-bullets">
+                <li>Developed JavaScript scripting solutions to automate daily systems health reporting.</li>
+                <li>Optimized relational database schemas and queries using PostgreSQL for faster dashboards load times.</li>
+                <li>Provided tier-2 support for hardware, software installation, and directory server administration for 150+ staff.</li>
+              </ul>
             </div>
             <div className="exp-block">
+              <span className="exp-date">March 2023 - June 2023</span>
               <h3 className="exp-title">Intern</h3>
-              <div className="exp-meta">GIZ Don Bosco, Ondo State</div>
+              <div className="exp-meta">GIZ Don Bosco, Ondo State | Web & Technical Support</div>
+              <p className="exp-desc">
+                Built and customized web presentation modules and managed regional local area network configurations.
+              </p>
+              <ul className="exp-bullets">
+                <li>Created custom responsive landing pages and user portals using WordPress.</li>
+                <li>Monitored, secured, and configured routers and switches to improve local network uptime.</li>
+                <li>Compiled hardware troubleshooting handbooks and hosted technology induction sessions for incoming students.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -186,7 +204,7 @@ function App() {
           <span className="section-pre">PROFILE INDEX</span>
           <h2 className="section-title">Technical Expertise</h2>
         </div>
-        <div className="skills-grid reveal delay-100">
+        <div className="skills-split-layout reveal delay-100">
           <div className="skills-category">
             <h3>Core Technologies</h3>
             <div className="tech-icons-grid">
@@ -195,7 +213,7 @@ function App() {
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo" className="tech-icon-img" />
                 <span className="tech-icon-name">Python</span>
               </div>
-              
+
               {/* JavaScript */}
               <div className="tech-icon-card">
                 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" className="tech-icon-img" />
@@ -252,7 +270,33 @@ function App() {
             </div>
           </div>
 
-
+          <div className="capabilities-category">
+            <h3>Capabilities & Execution</h3>
+            <div className="capability-group">
+              <h4>Frontend & UI Engineering</h4>
+              <ul>
+                <li>Crafting modular, interactive user interfaces using React and modern component design patterns.</li>
+                <li>Styling sleek layouts using custom responsive layouts, fluid gradients, and dynamic animations.</li>
+                <li>Ensuring strict layout accessibility, clean semantic HTML structures, and SEO compliance.</li>
+              </ul>
+            </div>
+            <div className="capability-group">
+              <h4>Backend & Database Design</h4>
+              <ul>
+                <li>Developing secure and performant backend services, RESTful APIs, and systems logic in Python & Node.</li>
+                <li>Modeling database structures, structuring complex relations, and query tuning in PostgreSQL.</li>
+                <li>Integrating asynchronous HTTP communication, custom API error boundaries, and payload sanitization.</li>
+              </ul>
+            </div>
+            <div className="capability-group">
+              <h4>Cloud Infrastructure & Tooling</h4>
+              <ul>
+                <li>Version control and branch management workflows in Git & GitHub.</li>
+                <li>API route testing, load simulation, and endpoint request mapping in Postman.</li>
+                <li>Configuring build systems, secret env bindings, and automated deploys on Vercel & Render.</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -272,6 +316,11 @@ function App() {
                 <div className="project-desc-block">
                   An academic guidance system that assists Computer Science students with queries regarding courses and department resource access.
                 </div>
+                <ul className="project-bullets-list">
+                  <li>Features an interactive, AI-driven chatbot helper to guide student course registrations and curriculum queries.</li>
+                  <li>Queries specialized relational tables to retrieve real-time department schedules and resources.</li>
+                  <li>Built with query pool connection monitoring to ensure maximum application uptime.</li>
+                </ul>
               </div>
               <div className="project-tech-tags">
                 <span className="tech-tag">Python</span>
@@ -295,6 +344,11 @@ function App() {
                 <div className="project-desc-block">
                   A garment prediction system designed to classify styles and stream visual analytics metrics.
                 </div>
+                <ul className="project-bullets-list">
+                  <li>Implements computer vision models to classify clothing categories and styles.</li>
+                  <li>Streams prediction scores and visual telemetry metrics to a frontend dashboard.</li>
+                  <li>Utilizes clean REST interfaces to securely handle image payload analysis request flows.</li>
+                </ul>
               </div>
               <div className="project-tech-tags">
                 <span className="tech-tag">Python</span>
@@ -415,32 +469,32 @@ function App() {
                 )}
                 <div className="form-group">
                   <label htmlFor="name">Your Name</label>
-                  <input 
-                    type="text" 
-                    id="name" 
-                    required 
-                    placeholder="John Doe" 
+                  <input
+                    type="text"
+                    id="name"
+                    required
+                    placeholder="John Doe"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="email">Email Address</label>
-                  <input 
-                    type="email" 
-                    id="email" 
-                    required 
-                    placeholder="john@example.com" 
+                  <input
+                    type="email"
+                    id="email"
+                    required
+                    placeholder="john@example.com"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   />
                 </div>
                 <div className="form-group">
                   <label htmlFor="message">Your Message</label>
-                  <textarea 
-                    id="message" 
-                    rows="5" 
-                    required 
+                  <textarea
+                    id="message"
+                    rows="5"
+                    required
                     placeholder="How can I help you?"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
