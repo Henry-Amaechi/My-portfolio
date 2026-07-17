@@ -1111,3 +1111,52 @@ footer {
   animation: fadeIn 0.4s ease forwards;
 }
 
+/* Skeleton loader shimmer animation and container */
+.image-skeleton-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-card);
+  overflow: hidden;
+}
+
+.skeleton-shimmer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 23, 31, 0) 0%,
+    rgba(255, 255, 255, 0.03) 25%,
+    rgba(6, 182, 212, 0.08) 50%,
+    rgba(255, 255, 255, 0.03) 75%,
+    rgba(23, 23, 31, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer-anim 1.5s infinite linear;
+}
+
+@keyframes skeleton-shimmer-anim {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.image-skeleton-container img {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.image-skeleton-container img.visible {
+  opacity: 1;
+}
+
+.image-skeleton-container img.hidden {
+  opacity: 0;
+}
+

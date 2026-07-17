@@ -1,5 +1,22 @@
 import React, { useState, useEffect } from 'react';
 
+// Shimmer skeleton loading placeholder for large image assets
+function ImageWithSkeleton({ src, alt, className }) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <div className={`image-skeleton-container ${loaded ? 'loaded' : ''}`} style={{ width: '100%', height: '100%', position: 'relative' }}>
+      {!loaded && <div className="skeleton-shimmer"></div>}
+      <img
+        src={src}
+        alt={alt}
+        className={`${className} ${loaded ? 'visible' : 'hidden'}`}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  );
+}
+
 function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [formStatus, setFormStatus] = useState('idle'); // 'idle' | 'submitting' | 'success' | 'error'
@@ -127,7 +144,7 @@ function App() {
         </div>
         <div className="hero-right reveal delay-300">
           <div className="hero-image-wrapper">
-            <img src="/my_profile_image.jpeg" alt="Henry Amaechi Profile" className="hero-image" />
+            <ImageWithSkeleton src="/my_profile_image.jpeg" alt="Henry Amaechi Profile" className="hero-image" />
           </div>
         </div>
       </div>
@@ -264,7 +281,7 @@ function App() {
             </div>
             <div className="project-right">
               <div className="project-image-wrapper">
-                <img src="/eduguide_project.png" alt="EduGuide System Screenshot" className="project-image" />
+                <ImageWithSkeleton src="/eduguide_project.png" alt="EduGuide System Screenshot" className="project-image" />
               </div>
             </div>
           </div>
@@ -286,7 +303,7 @@ function App() {
             </div>
             <div className="project-right">
               <div className="project-image-wrapper">
-                <img src="/garment_prediction.png" alt="Garment Prediction System Screenshot" className="project-image" />
+                <ImageWithSkeleton src="/garment_prediction.png" alt="Garment Prediction System Screenshot" className="project-image" />
               </div>
             </div>
           </div>
