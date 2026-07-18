@@ -128,8 +128,8 @@ nav a.active::after {
 }
 
 .profile-picture-container {
-  width: 120px;
-  height: 120px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   margin: 0 auto 24px;
   border: 3px solid var(--cyan);
