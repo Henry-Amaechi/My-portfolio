@@ -113,9 +113,23 @@ nav a.active::after {
   text-align: center;
 }
 
+.intro-content-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.intro-content {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .profile-picture-container {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   margin: 0 auto 24px;
   border: 3px solid var(--cyan);
@@ -154,6 +168,7 @@ nav a.active::after {
   max-width: 600px;
   width: 100%;
   padding: 32px;
+  margin: 0 auto;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   text-align: center;
 }
