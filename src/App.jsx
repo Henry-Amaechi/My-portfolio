@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 // Shimmer skeleton loading placeholder for large image assets
-function ImageWithSkeleton({ src, alt, className }) {
+function ImageWithSkeleton({ src, alt, className, wrapperClassName }) {
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={`image-skeleton-container ${loaded ? 'loaded' : ''}`} style={{ width: '100%', height: '100%', position: 'relative' }}>
+    <div className={`image-skeleton-container ${wrapperClassName || ''} ${loaded ? 'loaded' : ''}`} style={{ width: '100%', height: '100%', position: 'relative' }}>
       {!loaded && <div className="skeleton-shimmer"></div>}
       <img
         src={src}
@@ -123,6 +123,7 @@ function App() {
               src="/my_profile_image.jpeg"
               alt="profile picture of Henry Amaechi"
               className="profile-picture"
+              wrapperClassName="profile-picture-container"
             />
             <h1>Henry Amaechi</h1>
             <h2>Fullstack Developer</h2>
