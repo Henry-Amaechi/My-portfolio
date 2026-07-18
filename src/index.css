@@ -141,6 +141,8 @@ nav a.active::after {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: scale(2.4);
+  transform-origin: 50% 18%;
 }
 
 #intro h1 {
