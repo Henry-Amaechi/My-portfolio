@@ -107,18 +107,12 @@ function App() {
 
       {/* Navigation Header */}
       <header>
-        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <span>&lt;</span> HENRY <span>/&gt;</span>
-        </div>
         <nav>
           <a href="#projects-content" className={activeSection === 'projects-content' ? 'active' : ''}>Projects</a>
           <a href="#stack-content" className={activeSection === 'stack-content' ? 'active' : ''}>Stack</a>
           <a href="#resume-content" className={activeSection === 'resume-content' ? 'active' : ''}>CV</a>
           <a href="#contact-content" className={activeSection === 'contact-content' ? 'active' : ''}>Contact</a>
         </nav>
-        <button onClick={() => document.getElementById('contact-content')?.scrollIntoView({ behavior: 'smooth' })} className="nav-cta">
-          Get In Touch
-        </button>
       </header>
 
       {/* Intro Section */}
