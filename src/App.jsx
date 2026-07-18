@@ -151,7 +151,7 @@ function App() {
         {/* Projects Section */}
         <div id="projects-content" className="content-section">
           <h2 className="tab-headline">Projects</h2>
-          
+
           {/* EduGuide */}
           <section className="demo-section">
             <div>
@@ -228,7 +228,7 @@ function App() {
         {/* Stack Section */}
         <div id="stack-content" className="content-section">
           <h2 className="tab-headline">Tech Stack</h2>
-          
+
           {/* Frontend */}
           <section className="icons-section-wrapper">
             <section className="icons-section tech-stack-section">
@@ -315,7 +315,7 @@ function App() {
         {/* CV Section */}
         <div id="resume-content" className="content-section">
           <h2 className="tab-headline">CV</h2>
-          
+
           <div className="timeline-section">
             <div className="timeline">
               {/* IT Intern */}
@@ -352,7 +352,7 @@ function App() {
         {/* Contact Section */}
         <div id="contact-content" className="content-section">
           <h2 className="tab-headline">Contact Me</h2>
-          
+
           {formStatus === 'success' ? (
             <div className="form-success-message">
               <h3>Message Sent Successfully!</h3>
@@ -412,7 +412,7 @@ function App() {
 
       {/* Footer */}
       <footer>
-        <p>&copy; {new Date().getFullYear()} Henry Amaechi. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Copyright Henry Amaechi.</p>
       </footer>
     </>
   );
