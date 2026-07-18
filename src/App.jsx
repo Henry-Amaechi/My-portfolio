@@ -119,11 +119,10 @@ function App() {
       <div id="intro" className="content-section">
         <div className="intro-content-wrapper">
           <div className="intro-content">
-            <ImageWithSkeleton
+            <img
               src="/my_profile_image.jpeg"
               alt="profile picture of Henry Amaechi"
               className="profile-picture"
-              wrapperClassName="profile-picture-container"
             />
             <h1>Henry Amaechi</h1>
             <h2>Fullstack Developer</h2>
