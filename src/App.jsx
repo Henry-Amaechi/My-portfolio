@@ -57,9 +57,9 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'skills', 'projects', 'contact'];
-      let current = 'hero';
-      const scrollPosition = window.scrollY + 120; // 120px offset for header height
+      const sections = ['projects-content', 'stack-content', 'resume-content', 'contact-content'];
+      let current = '';
+      const scrollPosition = window.scrollY + 160;
 
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
@@ -76,7 +76,6 @@ function App() {
 
     window.addEventListener('scroll', handleScroll);
 
-    // Scroll reveal observer (fade in & fade out on enter/leave)
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -108,406 +107,308 @@ function App() {
 
       {/* Navigation Header */}
       <header>
-        <div className="logo" onClick={() => window.scrollTo(0, 0)}>
+        <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <span>&lt;</span> HENRY <span>/&gt;</span>
         </div>
         <nav>
-          <a href="#hero" className={activeSection === 'hero' ? 'active' : ''}>Home</a>
-          <a href="#about" className={activeSection === 'about' ? 'active' : ''}>About</a>
-          <a href="#skills" className={activeSection === 'skills' ? 'active' : ''}>Skills</a>
-          <a href="#projects" className={activeSection === 'projects' ? 'active' : ''}>Projects</a>
-          <a href="#contact" className={activeSection === 'contact' ? 'active' : ''}>Contact</a>
+          <a href="#projects-content" className={activeSection === 'projects-content' ? 'active' : ''}>Projects</a>
+          <a href="#stack-content" className={activeSection === 'stack-content' ? 'active' : ''}>Stack</a>
+          <a href="#resume-content" className={activeSection === 'resume-content' ? 'active' : ''}>CV</a>
+          <a href="#contact-content" className={activeSection === 'contact-content' ? 'active' : ''}>Contact</a>
         </nav>
-        <button onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })} className="nav-cta">
+        <button onClick={() => document.getElementById('contact-content')?.scrollIntoView({ behavior: 'smooth' })} className="nav-cta">
           Get In Touch
         </button>
       </header>
 
-      {/* Hero Section */}
-      <div className="hero-container" id="hero">
-        <div className="hero-left">
-          <span className="hero-pretitle reveal delay-100">FULLSTACK DEVELOPER</span>
-          <h1 className="hero-title reveal delay-200">
-            Henry <span>Amaechi</span>
-          </h1>
-          <p className="hero-subtitle reveal delay-300">
-            I'm a software engineer specialising in frontend, backend, and WordPress development. Experienced in designing APIs with Python, query optimization, and writing JavaScript scripting solutions.
-          </p>
-          <div className="hero-ctas reveal delay-400">
-            <button onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })} className="btn-primary">
-              View Projects
-            </button>
-            <button onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })} className="btn-secondary">
-              Profile Details
-            </button>
-          </div>
-        </div>
-        <div className="hero-right reveal delay-300">
-          <div className="hero-image-wrapper">
-            <ImageWithSkeleton src="/my_profile_image.jpeg" alt="Henry Amaechi Profile" className="hero-image" />
+      {/* Intro Section */}
+      <div id="intro" className="content-section">
+        <div className="intro-content-wrapper">
+          <div className="intro-content">
+            <ImageWithSkeleton
+              src="/my_profile_image.jpeg"
+              alt="profile picture of Henry Amaechi"
+              className="profile-picture"
+            />
+            <h1>Henry Amaechi</h1>
+            <h2>Fullstack Developer</h2>
+
+            <div className="intro-list-wrapper">
+              <p>
+                I am a Computer Science graduate specializing in developing robust applications, scripting solutions, and managing technical infrastructure. My expertise bridges frontend, backend, and WordPress development.
+              </p>
+              <div className="intro-button-wrapper">
+                <a href="#contact-content" className="intro-button">
+                  Get in touch
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* About Section */}
-      <section className="about-section" id="about">
-        <div className="section-head reveal">
-          <span className="section-pre">BACKSTORY</span>
-          <h2 className="section-title">Professional Background</h2>
-        </div>
-        <div className="about-grid">
-          <div className="about-description reveal delay-100">
-            <p>
-              I am a Computer Science graduate specializing in developing robust applications, scripting solutions, and managing technical infrastructure.
-            </p>
-            <p>
-              My expertise bridges software engineering, systems administration, and custom WordPress development. I design backends and API architectures, query database schemas, and coordinate IT support structures.
-            </p>
-            <p>
-              I focus on engineering reliability: keeping API connections stable, structuring networks for optimal throughput, and writing maintainable code.
-            </p>
-          </div>
-          <div className="about-details reveal delay-200">
-            <div className="exp-block">
-              <span className="exp-date">July 2024 - October 2024</span>
-              <h3 className="exp-title">IT Intern</h3>
-              <div className="exp-meta">Workforce Group, Lagos | IT Operations</div>
-              <p className="exp-desc">
-                Automated corporate operations tasks, designed custom backend API utilities, and maintained corporate network integrity.
-              </p>
-              <ul className="exp-bullets">
-                <li>Developed JavaScript scripting solutions to automate daily systems health reporting.</li>
-                <li>Optimized relational database schemas and queries using PostgreSQL for faster dashboards load times.</li>
-                <li>Provided tier-2 support for hardware, software installation, and directory server administration for 150+ staff.</li>
-              </ul>
-            </div>
-            <div className="exp-block">
-              <span className="exp-date">March 2023 - June 2023</span>
-              <h3 className="exp-title">Intern</h3>
-              <div className="exp-meta">GIZ Don Bosco, Ondo State | Web & Technical Support</div>
-              <p className="exp-desc">
-                Built and customized web presentation modules and managed regional local area network configurations.
-              </p>
-              <ul className="exp-bullets">
-                <li>Created custom responsive landing pages and user portals using WordPress.</li>
-                <li>Monitored, secured, and configured routers and switches to improve local network uptime.</li>
-                <li>Compiled hardware troubleshooting handbooks and hosted technology induction sessions for incoming students.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Skills Section */}
-      <section className="skills-section" id="skills">
-        <div className="section-head reveal">
-          <span className="section-pre">PROFILE INDEX</span>
-          <h2 className="section-title">Technical Expertise</h2>
-        </div>
-        <div className="skills-split-layout reveal delay-100">
-          <div className="skills-category">
-            <h3>Core Technologies</h3>
-            <div className="tech-icons-grid">
-              {/* Python */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">Python</span>
-              </div>
-
-              {/* JavaScript */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">JavaScript</span>
-              </div>
-
-              {/* PostgreSQL */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">PostgreSQL</span>
-              </div>
-
-              {/* React */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">React</span>
-              </div>
-
-              {/* HTML */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5 Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">HTML5</span>
-              </div>
-
-              {/* CSS */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3 Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">CSS3</span>
-              </div>
-
-              {/* WordPress */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">WordPress</span>
-              </div>
-
-              {/* Git */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">Git</span>
-              </div>
-
-              {/* Postman */}
-              <div className="tech-icon-card">
-                <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">Postman</span>
-              </div>
-
-              {/* Render */}
-              <div className="tech-icon-card">
-                <img src="/render_logo.png" alt="Render Logo" className="tech-icon-img" />
-                <span className="tech-icon-name">Render</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="capabilities-category">
-            <h3>Capabilities & Execution</h3>
-            <div className="capability-group">
-              <h4>Frontend & UI Engineering</h4>
-              <ul>
-                <li>Crafting modular, interactive user interfaces using React and modern component design patterns.</li>
-                <li>Styling sleek layouts using custom responsive layouts, fluid gradients, and dynamic animations.</li>
-                <li>Ensuring strict layout accessibility, clean semantic HTML structures, and SEO compliance.</li>
-              </ul>
-            </div>
-            <div className="capability-group">
-              <h4>Backend & Database Design</h4>
-              <ul>
-                <li>Developing secure and performant backend services, RESTful APIs, and systems logic in Python & Node.</li>
-                <li>Modeling database structures, structuring complex relations, and query tuning in PostgreSQL.</li>
-                <li>Integrating asynchronous HTTP communication, custom API error boundaries, and payload sanitization.</li>
-              </ul>
-            </div>
-            <div className="capability-group">
-              <h4>Cloud Infrastructure & Tooling</h4>
-              <ul>
-                <li>Version control and branch management workflows in Git & GitHub.</li>
-                <li>API route testing, load simulation, and endpoint request mapping in Postman.</li>
-                <li>Configuring build systems, secret env bindings, and automated deploys on Vercel & Render.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="projects-section" id="projects">
-        <div className="section-head reveal">
-          <span className="section-pre">WORK</span>
-          <h2 className="section-title">Projects</h2>
-        </div>
-        <div className="projects-list">
+      <div className="content-container">
+        {/* Projects Section */}
+        <div id="projects-content" className="content-section">
+          <h2 className="tab-headline">Projects</h2>
+          
           {/* EduGuide */}
-          <div className="project-row reveal">
-            <div className="project-left">
-              <div>
-                <span className="project-label">Academic Guidance System</span>
-                <h3 className="project-title">EduGuide</h3>
-                <div className="project-desc-block">
-                  An academic guidance system that assists Computer Science students with queries regarding courses and department resource access.
-                </div>
-                <ul className="project-bullets-list">
-                  <li>Features an interactive, AI-driven chatbot helper to guide student course registrations and curriculum queries.</li>
-                  <li>Queries specialized relational tables to retrieve real-time department schedules and resources.</li>
-                  <li>Built with query pool connection monitoring to ensure maximum application uptime.</li>
-                </ul>
-              </div>
-              <div className="project-tech-tags">
-                <span className="tech-tag">Python</span>
-                <span className="tech-tag">JavaScript</span>
-                <span className="tech-tag">PostgreSQL</span>
-              </div>
-            </div>
-            <div className="project-right">
-              <div className="project-image-wrapper">
-                <ImageWithSkeleton src="/eduguide_project.png" alt="EduGuide System Screenshot" className="project-image" />
-              </div>
-            </div>
-          </div>
-
-          {/* Garment Prediction System */}
-          <div className="project-row reveal">
-            <div className="project-left">
-              <div>
-                <span className="project-label">Garment Prediction System</span>
-                <h3 className="project-title">Garment Prediction System</h3>
-                <div className="project-desc-block">
-                  A garment prediction system designed to classify styles and stream visual analytics metrics.
-                </div>
-                <ul className="project-bullets-list">
-                  <li>Implements computer vision models to classify clothing categories and styles.</li>
-                  <li>Streams prediction scores and visual telemetry metrics to a frontend dashboard.</li>
-                  <li>Utilizes clean REST interfaces to securely handle image payload analysis request flows.</li>
-                </ul>
-              </div>
-              <div className="project-tech-tags">
-                <span className="tech-tag">Python</span>
-                <span className="tech-tag">JavaScript</span>
-              </div>
-            </div>
-            <div className="project-right">
-              <div className="project-image-wrapper">
-                <ImageWithSkeleton src="/garment_prediction.png" alt="Garment Prediction System Screenshot" className="project-image" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Section */}
-      <section className="contact-section" id="contact">
-        <div className="section-head reveal">
-          <span className="section-pre">INQUIRIES</span>
-          <h2 className="section-title">Get In Touch</h2>
-        </div>
-        <div className="contact-grid">
-          <div className="contact-info reveal delay-100">
+          <section className="demo-section">
             <div>
-              <h3 className="contact-headline">Let's talk about opportunities.</h3>
-              <p className="contact-para">
-                I am seeking junior software engineering roles in Lagos or remote. Send a message, and I'll respond as soon as possible.
-              </p>
+              <ImageWithSkeleton
+                src="/eduguide_project.png"
+                alt="EduGuide screenshot"
+                className="screenshot-box-shadow"
+              />
             </div>
-            <div className="contact-lines">
-              <div className="contact-line">
-                <div className="contact-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-                    <polyline points="22,6 12,13 2,6"></polyline>
-                  </svg>
+            <div>
+              <h3>EduGuide</h3>
+              <article>
+                An academic guidance system that assists Computer Science students with queries regarding courses and department resource access. It features an interactive, AI-driven chatbot helper to guide student course registrations and curriculum queries, queries specialized relational tables to retrieve real-time department schedules and resources, and is built with query pool connection monitoring to ensure maximum application uptime.
+              </article>
+              <div className="icons-wrapper">
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="tech-icon-small" />
+                  <div>Python</div>
                 </div>
-                <div>
-                  <div className="contact-label">Email Address</div>
-                  <div className="contact-val">
-                    <a href="mailto:dockamaechi@gmail.com" style={{ color: 'inherit', textDecoration: 'none' }}>
-                      dockamaechi@gmail.com
-                    </a>
-                  </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="tech-icon-small" />
+                  <div>JavaScript</div>
                 </div>
-              </div>
-              <div className="contact-line">
-                <div className="contact-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <div className="contact-label">Phone</div>
-                  <div className="contact-val">+234 810 844 1890, +234 807 109 5390</div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="tech-icon-small" />
+                  <div>PostgreSQL</div>
                 </div>
               </div>
-              <div className="contact-line">
-                <div className="contact-icon-wrapper">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                  </svg>
-                </div>
-                <div>
-                  <div className="contact-label">Location</div>
-                  <div className="contact-val">Lagos, Nigeria</div>
-                </div>
-              </div>
-            </div>
-
-            <div className="contact-socials">
-              <h4 className="socials-title">Connect With Me</h4>
-              <div className="socials-links-list">
-                <a href="https://linkedin.com/in/YOUR_USERNAME" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="LinkedIn">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                    <rect x="2" y="9" width="4" height="12"></rect>
-                    <circle cx="4" cy="4" r="2"></circle>
-                  </svg>
-                </a>
-                <a href="https://twitter.com/YOUR_USERNAME" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Twitter">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"></path>
-                  </svg>
-                </a>
-                <a href="https://github.com/Henry-Amaechi" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="GitHub">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="link-wrapper">
+                <a href="https://github.com/Henry-Amaechi/My-portfolio" target="_blank" rel="noopener" aria-label="GitHub Repository">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="project-github-icon">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
-                <a href="https://instagram.com/YOUR_USERNAME" target="_blank" rel="noreferrer" className="social-icon-btn" aria-label="Instagram">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </div>
+            </div>
+          </section>
+
+          {/* Garment Prediction System */}
+          <section className="demo-section">
+            <div>
+              <ImageWithSkeleton
+                src="/garment_prediction.png"
+                alt="Garment Prediction System screenshot"
+                className="screenshot-box-shadow"
+              />
+            </div>
+            <div>
+              <h3>Garment Prediction System</h3>
+              <article>
+                A garment prediction system designed to classify styles and stream visual analytics metrics. It implements computer vision models to classify clothing categories and styles, streams prediction scores and visual telemetry metrics to a frontend dashboard, and utilizes clean REST interfaces to securely handle image payload analysis request flows.
+              </article>
+              <div className="icons-wrapper">
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="tech-icon-small" />
+                  <div>Python</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="tech-icon-small" />
+                  <div>JavaScript</div>
+                </div>
+              </div>
+              <div className="link-wrapper">
+                <a href="https://github.com/Henry-Amaechi/My-portfolio" target="_blank" rel="noopener" aria-label="GitHub Repository">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="project-github-icon">
+                    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>
               </div>
             </div>
-          </div>
+          </section>
+        </div>
 
-          <div className="contact-form reveal delay-200">
-            {formStatus === 'success' ? (
-              <div className="form-success-message">
-                <h3>Message Sent Successfully!</h3>
-                <p>Thank you for reaching out. Henry will get back to you shortly.</p>
-                <button onClick={() => setFormStatus('idle')} className="btn-primary" style={{ marginTop: '16px' }}>
-                  Send Another Message
-                </button>
+        {/* Stack Section */}
+        <div id="stack-content" className="content-section">
+          <h2 className="tab-headline">Tech Stack</h2>
+          
+          {/* Frontend */}
+          <section className="icons-section-wrapper">
+            <section className="icons-section tech-stack-section">
+              <h3>Frontend</h3>
+              <ul>
+                <li><strong>Architecting</strong> modular, interactive user interfaces in React.</li>
+                <li>Styling sleek layouts with custom responsive design, fluid gradients, and dynamic animations.</li>
+                <li>Ensuring layout accessibility, clean semantic HTML, and SEO best practices.</li>
+              </ul>
+              <div className="icons-wrapper">
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="tech-icon-small" />
+                  <div>React</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="tech-icon-small" />
+                  <div>JavaScript</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" className="tech-icon-small" />
+                  <div>HTML5</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" className="tech-icon-small" />
+                  <div>CSS3</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg" alt="WordPress" className="tech-icon-small" />
+                  <div>WordPress</div>
+                </div>
               </div>
-            ) : (
-              <form onSubmit={handleFormSubmit}>
-                {formStatus === 'error' && (
-                  <div className="form-error-message">
-                    Something went wrong. Please check your Web3Forms access key or try again.
-                  </div>
-                )}
-                <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  />
+            </section>
+          </section>
+
+          {/* Backend */}
+          <section className="icons-section-wrapper">
+            <section className="icons-section tech-stack-section">
+              <h3>Backend & Database</h3>
+              <ul>
+                <li>Developing secure, performant APIs and background services in Python.</li>
+                <li>Modeling schemas, query design, and index tuning in PostgreSQL.</li>
+                <li>Integrating asynchronous logic and request handling.</li>
+              </ul>
+              <div className="icons-wrapper">
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="tech-icon-small" />
+                  <div>Python</div>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  />
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="tech-icon-small" />
+                  <div>PostgreSQL</div>
                 </div>
-                <div className="form-group">
-                  <label htmlFor="message">Your Message</label>
-                  <textarea
-                    id="message"
-                    rows="5"
-                    required
-                    placeholder="How can I help you?"
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  ></textarea>
+              </div>
+            </section>
+          </section>
+
+          {/* Tools & Methods */}
+          <section className="icons-section-wrapper">
+            <section className="icons-section tech-stack-section">
+              <h3>Tools & Methods</h3>
+              <ul>
+                <li>Version control and branch management workflows in Git & GitHub.</li>
+                <li>API route testing, payload simulation, and query tracing in Postman.</li>
+                <li>Configuring environment secrets and automated builds on Render & Vercel.</li>
+              </ul>
+              <div className="icons-wrapper">
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" className="tech-icon-small" />
+                  <div>Git</div>
                 </div>
-                <button type="submit" className="submit-btn" disabled={formStatus === 'submitting'}>
-                  {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
-            )}
+                <div className="techstack-icon">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg" alt="Postman" className="tech-icon-small" />
+                  <div>Postman</div>
+                </div>
+                <div className="techstack-icon">
+                  <img src="/render_logo.png" alt="Render Logo" className="tech-icon-small" />
+                  <div>Render</div>
+                </div>
+              </div>
+            </section>
+          </section>
+        </div>
+
+        {/* CV Section */}
+        <div id="resume-content" className="content-section">
+          <h2 className="tab-headline">CV</h2>
+          
+          <div className="timeline-section">
+            <div className="timeline">
+              {/* IT Intern */}
+              <div className="timeline-item">
+                <span className="timeline-dot"></span>
+                <div className="timeline-date">July 2024 - October 2024</div>
+                <div className="timeline-content">
+                  <h3>IT Intern – Workforce Group, Lagos</h3>
+                  <ul>
+                    <li>Developed scripting solutions to automate systems logging and health reporting.</li>
+                    <li>Optimized relational database queries using PostgreSQL to support application response speeds.</li>
+                    <li>Administered hardware and server setups to keep corporate resources running for 150+ workers.</li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Technical Intern */}
+              <div className="timeline-item">
+                <span className="timeline-dot"></span>
+                <div className="timeline-date">March 2023 - June 2023</div>
+                <div className="timeline-content">
+                  <h3>Technical Intern – GIZ Don Bosco, Ondo State</h3>
+                  <ul>
+                    <li>Created responsive web program pages and local content portals using WordPress.</li>
+                    <li>Monitored, troubleshot, and set up routers and switches to improve training center connection speed.</li>
+                    <li>Compiled hardware manuals and ran workshops for incoming technical students.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+
+        {/* Contact Section */}
+        <div id="contact-content" className="content-section">
+          <h2 className="tab-headline">Contact Me</h2>
+          
+          {formStatus === 'success' ? (
+            <div className="form-success-message">
+              <h3>Message Sent Successfully!</h3>
+              <p>Thank you for reaching out. Henry will get back to you shortly.</p>
+              <button onClick={() => setFormStatus('idle')} className="btn-primary" style={{ marginTop: '16px' }}>
+                Send Another Message
+              </button>
+            </div>
+          ) : (
+            <form onSubmit={handleFormSubmit} className="contact-form">
+              {formStatus === 'error' && (
+                <div className="form-error-message">
+                  Something went wrong. Please check your Web3Forms access key or try again.
+                </div>
+              )}
+              <div className="form-group">
+                <label htmlFor="name">Your Name</label>
+                <input
+                  type="text"
+                  id="name"
+                  required
+                  placeholder="John Doe"
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email Address</label>
+                <input
+                  type="email"
+                  id="email"
+                  required
+                  placeholder="john@example.com"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+              </div>
+              <div className="form-group">
+                <label htmlFor="message">Your Message</label>
+                <textarea
+                  id="message"
+                  rows="5"
+                  required
+                  placeholder="How can I help you?"
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                ></textarea>
+              </div>
+              <button type="submit" className="intro-button" disabled={formStatus === 'submitting'} style={{ border: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'center' }}>
+                {formStatus === 'submitting' ? 'Sending...' : 'Send Message'}
+              </button>
+            </form>
+          )}
+        </div>
+
+      </div>
 
       {/* Footer */}
       <footer>
